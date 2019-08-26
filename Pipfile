@@ -1,0 +1,14 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+isort = "*"
+autohooks = ">=1.1"
+
+[dev-packages]
+black = "*"
+
+[pipenv]
+allow_prereleases = true

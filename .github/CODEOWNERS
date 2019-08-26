@@ -1,0 +1,5 @@
+# default reviewers
+*                 @wiegandm
+
+# pylint config
+.pylintrc         @wiegandm @greenbone/qm
