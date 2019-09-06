@@ -50,7 +50,7 @@ include = ['foo/*.py', '*.foo']
 ```
 
 When using `autohooks-plugins-isort` in combination with
-[autohooks-plugin-isort](https://github.com/greenbone/autohooks-plugin-isort),
+[autohooks-plugin-black](https://github.com/greenbone/autohooks-plugin-black),
 the following configuration is recommended to ensure a consistent formatting:
 
 ```toml
