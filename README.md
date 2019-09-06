@@ -49,6 +49,19 @@ pre-commit = ["autohooks.plugins.isort"]
 include = ['foo/*.py', '*.foo']
 ```
 
+When using `autohooks-plugins-isort` in combination with
+[autohooks-plugin-isort](https://github.com/greenbone/autohooks-plugin-isort),
+the following configuration is recommended to ensure a consistent formatting:
+
+```toml
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+line_length = 80
+```
+
 ## Maintainer
 
 This project is maintained by [Greenbone Networks GmbH](https://www.greenbone.net/).
