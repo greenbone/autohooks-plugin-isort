@@ -31,11 +31,11 @@
         },
         "isort": {
             "hashes": [
-                "sha256:cb76a2fac5ac08eae0020f7e56bab895cf3d8982034aa16f3cd67984edf26223",
-                "sha256:e7b11f4317c0668bd2a25f924c14338ca39b92723f24bdaef37452af0dd5a87b"
+                "sha256:3d8e0d7678b66af1e3a6936f2a380a5d4f3faf4b1b38c6aaa4bed6695c6bdcde",
+                "sha256:639b8084644ceb13a806f42d690273b9d844793ac2f515fbc575ba65dc044de0"
             ],
             "index": "pypi",
-            "version": "==5.0.5"
+            "version": "==5.0.9"
         },
         "packaging": {
             "hashes": [
