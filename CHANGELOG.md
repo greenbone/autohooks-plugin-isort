@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 ### Changed
+
+Replaced pipenv with poetry for dependency management. poetry install works a bit different than pipenv install. It installs dev packages. [#23](https://github.com/greenbone/autohooks-plugin-isort/pull/23)
+
 ### Deprecated
 ### Fixed
 ### Removed
