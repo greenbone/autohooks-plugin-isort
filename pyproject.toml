@@ -41,12 +41,12 @@ keywords = [
 
 [tool.poetry.dependencies]
 python = "^3.5"
-isort = {version = "^5.4.0", python = "^3.6"}
+isort = {version = "^5.5.1", python = "^3.6"}
 autohooks = ">=1.1"
 
 [tool.poetry.dev-dependencies]
 pytest = "*"
-isort = {version = "^5.4.0", python = "^3.6"}
+isort = {version = "^5.5.1", python = "^3.6"}
 black = {version = "20.8b1", python = "^3.6"}
 mypy = "^0.782"
 
