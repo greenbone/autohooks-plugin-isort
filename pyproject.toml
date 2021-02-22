@@ -48,7 +48,7 @@ autohooks = ">=1.1"
 pytest = "*"
 isort = {version = "^5.7.0", python = "^3.6"}
 black = {version = "20.8b1", python = "^3.6"}
-mypy = "^0.800"
+mypy = "^0.812"
 
 [tool.black]
 line-length = 80
