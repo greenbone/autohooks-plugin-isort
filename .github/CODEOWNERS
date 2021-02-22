@@ -1,5 +1,5 @@
 # default reviewers
-*                 @wiegandm
+*                 @greenbone/python-gvm-maintainers
 
 # pylint config
-.pylintrc         @wiegandm @greenbone/qm
+.pylintrc         @greenbone/python-gvm-maintainers @greenbone/qm
