@@ -101,7 +101,7 @@ python-versions = ">=3.6, <3.7"
 
 [[package]]
 name = "importlib-metadata"
-version = "2.1.1"
+version = "2.1.2"
 description = "Read metadata from Python packages"
 category = "dev"
 optional = false
@@ -347,8 +347,8 @@ dataclasses = [
     {file = "dataclasses-0.7.tar.gz", hash = "sha256:494a6dcae3b8bcf80848eea2ef64c0cc5cd307ffc263e17cdf42f3e5420808e6"},
 ]
 importlib-metadata = [
-    {file = "importlib_metadata-2.1.1-py2.py3-none-any.whl", hash = "sha256:c2d6341ff566f609e89a2acb2db190e5e1d23d5409d6cc8d2fe34d72443876d4"},
-    {file = "importlib_metadata-2.1.1.tar.gz", hash = "sha256:b8de9eff2b35fb037368f28a7df1df4e6436f578fa74423505b6c6a778d5b5dd"},
+    {file = "importlib_metadata-2.1.2-py2.py3-none-any.whl", hash = "sha256:cd6a92d78385dd145f5f233b3a6919acf5e8e43922aa9b9dbe78573e3540eb56"},
+    {file = "importlib_metadata-2.1.2.tar.gz", hash = "sha256:09db40742204610ef6826af16e49f0479d11d0d54687d0169ff7fddf8b3f557f"},
 ]
 iniconfig = [
     {file = "iniconfig-1.1.1-py2.py3-none-any.whl", hash = "sha256:011e24c64b7f47f6ebd835bb12a743f2fbe9a26d4cecaa7f53bc4f35ee9da8b3"},
