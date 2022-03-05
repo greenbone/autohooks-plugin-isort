@@ -70,9 +70,9 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
         for f in files:
             try:
                 subprocess.check_call(['isort', '-q', str(f.absolute_path())])
-                ok('Running isort on {}'.format(str(f.path)))
+                ok(f'Running isort on {str(f.path)}')
             except subprocess.CalledProcessError as e:
-                error('Running isort on {}'.format(str(f.path)))
+                error(f'Running isort on {str(f.path)}')
                 raise e
 
         stage_files_from_status_list(files)
