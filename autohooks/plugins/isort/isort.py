@@ -30,11 +30,11 @@ DEFAULT_INCLUDE = ('*.py',)
 
 def check_isort_installed():
     try:
-        import isort  # pylint: disable=unused-import
+        import isort  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
             'Could not find isort. Please add isort to your python environment'
-        )
+        ) from None
 
 
 def get_isort_config(config):
