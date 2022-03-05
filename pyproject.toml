@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "autohooks-plugin-isort"
-version = "20.4dev1"
+version = "22.3.0.dev1"
 description = "An autohooks plugin for python code formatting via isort" 
 license = "GPL-3.0-or-later"
 authors = ["Greenbone Networks GmbH <info@greenbone.net>"]
@@ -44,6 +44,7 @@ isort = "^5.8.0"
 autohooks = ">=21.6.0"
 
 [tool.poetry.dev-dependencies]
+pontos = "*"
 pytest = "*"
 pylint = "*"
 isort = {version = "^5.8.0", python = "^3.6"}
