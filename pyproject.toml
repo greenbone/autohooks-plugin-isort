@@ -44,11 +44,11 @@ isort = "^5.8.0"
 autohooks = ">=21.6.0"
 
 [tool.poetry.dev-dependencies]
-pontos = "*"
+pontos = "^22.1.1"
 pytest = "*"
-pylint = "*"
-isort = {version = "^5.8.0", python = "^3.6"}
-black = {version = "20.8b1", python = "^3.6"}
+pylint = "^2.12.2"
+isort = "^5.8.0"
+black = ">=20.8,<=23.0.0b0"
 mypy = "^0.910"
 
 [tool.black]
