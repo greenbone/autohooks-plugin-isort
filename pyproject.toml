@@ -4,7 +4,7 @@ build-backend = "poetry.masonry.api"
 
 [tool.poetry]
 name = "autohooks-plugin-isort"
-version = "20.4dev1"
+version = "22.3.0.dev1"
 description = "An autohooks plugin for python code formatting via isort" 
 license = "GPL-3.0-or-later"
 authors = ["Greenbone Networks GmbH <info@greenbone.net>"]
@@ -18,10 +18,9 @@ classifiers = [
   "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "Programming Language :: Python :: 3.5",
-  "Programming Language :: Python :: 3.6",
   "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
@@ -40,19 +39,21 @@ keywords = [
 ]
 
 [tool.poetry.dependencies]
-python = "^3.5"
-isort = {version = "^5.8.0", python = "^3.6"}
-autohooks = ">=1.1"
+python = "^3.7"
+isort = "^5.8.0"
+autohooks = ">=21.6.0"
 
 [tool.poetry.dev-dependencies]
+pontos = "^22.1.1"
 pytest = "*"
-isort = {version = "^5.8.0", python = "^3.6"}
-black = {version = "20.8b1", python = "^3.6"}
+pylint = "^2.12.2"
+isort = "^5.8.0"
+black = ">=20.8,<=23.0.0b0"
 mypy = "^0.910"
 
 [tool.black]
 line-length = 80
-target-version = ['py35', 'py36', 'py37', 'py38']
+target-version = ['py37', 'py38', 'py39']
 skip-string-normalization = true
 exclude = '''
 /(
@@ -72,3 +73,6 @@ exclude = '''
 [tool.autohooks]
 mode = "poetry"
 pre-commit = ['autohooks.plugins.black', 'autohooks.plugins.pylint']
+
+[tool.pontos.version]
+version-module-file = "autohooks/plugins/isort/__version__.py"

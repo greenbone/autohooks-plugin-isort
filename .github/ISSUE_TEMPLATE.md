@@ -19,17 +19,6 @@ Before reporting an issue please:
 2.
 3.
 
-### GVM versions
-**gsa:** (gsad --version)
-
-**gvm:** (gvmd --version)
-
-**openvas-scanner:** (openvassd --version)
-
-**gvm-libs:**
-
-**gvm-tools:** (gvm-cli --version)
-
 ### Environment
 **Operating system:**
 

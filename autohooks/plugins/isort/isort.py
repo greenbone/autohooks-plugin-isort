@@ -1,4 +1,4 @@
-# Copyright (C) 2019 Greenbone Networks GmbH
+# Copyright (C) 2019-2022 Greenbone Networks GmbH
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
@@ -30,11 +30,11 @@ DEFAULT_INCLUDE = ('*.py',)
 
 def check_isort_installed():
     try:
-        import isort  # pylint: disable=unused-import
+        import isort  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
             'Could not find isort. Please add isort to your python environment'
-        )
+        ) from None
 
 
 def get_isort_config(config):
@@ -70,9 +70,9 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
         for f in files:
             try:
                 subprocess.check_call(['isort', '-q', str(f.absolute_path())])
-                ok('Running isort on {}'.format(str(f.path)))
+                ok(f'Running isort on {str(f.path)}')
             except subprocess.CalledProcessError as e:
-                error('Running isort on {}'.format(str(f.path)))
+                error(f'Running isort on {str(f.path)}')
                 raise e
 
         stage_files_from_status_list(files)
