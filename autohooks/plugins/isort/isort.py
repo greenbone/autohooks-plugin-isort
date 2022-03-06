@@ -30,6 +30,7 @@ from autohooks.api.path import match
 DEFAULT_INCLUDE = ('*.py',)
 DEFAULT_ARGUMENTS = ('-q',)
 
+
 def check_isort_installed() -> None:
     try:
         import isort  # pylint: disable=unused-import, import-outside-toplevel
@@ -54,9 +55,7 @@ def get_include_from_config(config: Config):
         return DEFAULT_INCLUDE
 
     isort_config = get_isort_config(config)
-    return ensure_iterable(
-        isort_config.get_value('include', DEFAULT_INCLUDE)
-    )
+    return ensure_iterable(isort_config.get_value('include', DEFAULT_INCLUDE))
 
 
 def get_isort_arguments(config: Config):
@@ -69,7 +68,9 @@ def get_isort_arguments(config: Config):
     )
 
 
-def precommit(config: Config=None, **kwargs):  # pylint: disable=unused-argument
+def precommit(
+    config: Config = None, **kwargs
+):  # pylint: disable=unused-argument
     check_isort_installed()
 
     include = get_include_from_config(config)

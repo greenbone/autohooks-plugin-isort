@@ -64,12 +64,12 @@ class AutohooksIsortTestCase(TestCase):
 
     def test_ensure_iterable(self):
         test_var = 'bar'
-        bar = ensure_iterable(test_var)
-        self.assertEqual(bar, ['bar'])
+        bar_var = ensure_iterable(test_var)
+        self.assertEqual(bar_var, ['bar'])
 
         test_var = ['bar']
-        bar = ensure_iterable(test_var)
-        self.assertEqual(bar, ['bar'])
+        bar_var = ensure_iterable(test_var)
+        self.assertEqual(bar_var, ['bar'])
 
     def test_get_include_from_config(self):
         include = get_include_from_config(config=None)
