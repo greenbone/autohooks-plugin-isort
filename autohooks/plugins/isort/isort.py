@@ -16,8 +16,10 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
+from typing import List, Union
 
-from autohooks.api import out, ok, error
+from autohooks.api import ok, error
+from autohooks.config import Config
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
@@ -26,9 +28,9 @@ from autohooks.api.git import (
 from autohooks.api.path import match
 
 DEFAULT_INCLUDE = ('*.py',)
+DEFAULT_ARGUMENTS = ('-q',)
 
-
-def check_isort_installed():
+def check_isort_installed() -> None:
     try:
         import isort  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
@@ -37,26 +39,37 @@ def check_isort_installed():
         ) from None
 
 
-def get_isort_config(config):
+def get_isort_config(config: Config) -> Config:
     return config.get('tool', 'autohooks', 'plugins', 'isort')
 
 
-def get_include_from_config(config):
+def ensure_iterable(value: Union[List[str], str]) -> List[str]:
+    if isinstance(value, str):
+        return [value]
+    return value
+
+
+def get_include_from_config(config: Config):
     if not config:
         return DEFAULT_INCLUDE
 
     isort_config = get_isort_config(config)
-    include = isort_config.get_value('include', DEFAULT_INCLUDE)
-
-    if isinstance(include, str):
-        return [include]
-
-    return include
+    return ensure_iterable(
+        isort_config.get_value('include', DEFAULT_INCLUDE)
+    )
 
 
-def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
-    out('Running isort pre-commit hook')
+def get_isort_arguments(config: Config):
+    if not config:
+        return DEFAULT_ARGUMENTS
 
+    isort_config = get_isort_config(config)
+    return ensure_iterable(
+        isort_config.get_value('arguments', DEFAULT_ARGUMENTS)
+    )
+
+
+def precommit(config: Config=None, **kwargs):  # pylint: disable=unused-argument
     check_isort_installed()
 
     include = get_include_from_config(config)
@@ -66,14 +79,20 @@ def precommit(config=None, **kwargs):  # pylint: disable=unused-argument
         ok('No staged files for isort available')
         return 0
 
+    arguments = ['black']
+    arguments.extend(get_isort_arguments(config))
+
     with stash_unstaged_changes(files):
         for f in files:
             try:
-                subprocess.check_call(['isort', '-q', str(f.absolute_path())])
+                args = arguments.copy()
+                args.append(str(f.absolute_path()))
+
+                subprocess.check_call(args)
                 ok(f'Running isort on {str(f.path)}')
             except subprocess.CalledProcessError as e:
                 error(f'Running isort on {str(f.path)}')
-                raise e
+                raise e from None
 
         stage_files_from_status_list(files)
 
