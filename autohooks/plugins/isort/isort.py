@@ -80,7 +80,7 @@ def precommit(
         ok('No staged files for isort available')
         return 0
 
-    arguments = ['black']
+    arguments = ['isort']
     arguments.extend(get_isort_arguments(config))
 
     with stash_unstaged_changes(files):
