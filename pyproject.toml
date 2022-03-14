@@ -48,7 +48,7 @@ pontos = "^22.1.1"
 pytest = "*"
 pylint = "^2.12.2"
 black = ">=20.8,<=23.0.0b0"
-mypy = "^0.931"
+mypy = "^0.940"
 
 [tool.black]
 line-length = 80
