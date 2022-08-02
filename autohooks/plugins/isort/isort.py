@@ -18,14 +18,14 @@
 import subprocess
 from typing import List, Union
 
-from autohooks.api import ok, error
-from autohooks.config import Config
+from autohooks.api import error, ok
 from autohooks.api.git import (
     get_staged_status,
     stage_files_from_status_list,
     stash_unstaged_changes,
 )
 from autohooks.api.path import match
+from autohooks.config import Config
 
 DEFAULT_INCLUDE = ('*.py',)
 DEFAULT_ARGUMENTS = ('-q',)
