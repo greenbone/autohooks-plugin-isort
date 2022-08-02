@@ -42,49 +42,49 @@ def get_test_config_path(name):
 
 class AutohooksIsortTestCase(TestCase):
     def test_isort_installed(self):
-        sys.modules['isort'] = None
+        sys.modules["isort"] = None
         with self.assertRaises(Exception):
             check_isort_installed()
         # pop setting module to None again for other tests
-        sys.modules.pop('isort')
+        sys.modules.pop("isort")
 
     def test_get_isort_arguments(self):
         args = get_isort_arguments(config=None)
         self.assertEqual(args, DEFAULT_ARGUMENTS)
 
     def test_get_isort_config(self):
-        config_path = get_test_config_path('pyproject.test.toml')
+        config_path = get_test_config_path("pyproject.test.toml")
         self.assertTrue(config_path.is_file())
 
         autohooksconfig = load_config_from_pyproject_toml(config_path)
         self.assertTrue(autohooksconfig.has_config())
 
         isort_config = get_isort_config(autohooksconfig.get_config())
-        self.assertEqual(isort_config.get_value('foo'), 'bar')
+        self.assertEqual(isort_config.get_value("foo"), "bar")
 
     def test_ensure_iterable(self):
-        test_var = 'bar'
+        test_var = "bar"
         bar_var = ensure_iterable(test_var)
-        self.assertEqual(bar_var, ['bar'])
+        self.assertEqual(bar_var, ["bar"])
 
-        test_var = ['bar']
+        test_var = ["bar"]
         bar_var = ensure_iterable(test_var)
-        self.assertEqual(bar_var, ['bar'])
+        self.assertEqual(bar_var, ["bar"])
 
     def test_get_include_from_config(self):
         include = get_include_from_config(config=None)
         self.assertEqual(include, DEFAULT_INCLUDE)
 
-    @patch('autohooks.plugins.isort.isort.ok')
+    @patch("autohooks.plugins.isort.isort.ok")
     def test_precommit(self, _ok_mock):
         ret = precommit()
         self.assertFalse(ret)
 
     # these Terminal output functions don't run in the CI ...
-    @patch('autohooks.plugins.isort.isort.ok')
-    @patch('autohooks.plugins.isort.isort.error')
-    @patch('autohooks.plugins.isort.isort.get_staged_status')
+    @patch("autohooks.plugins.isort.isort.ok")
+    @patch("autohooks.plugins.isort.isort.error")
+    @patch("autohooks.plugins.isort.isort.get_staged_status")
     def test_precommit_staged(self, staged_mock, _error_mock, _ok_mock):
-        staged_mock.return_value = [StatusEntry('M  tests/isort_test.py')]
+        staged_mock.return_value = [StatusEntry("M  tests/isort_test.py")]
         ret = precommit()
         self.assertFalse(ret)

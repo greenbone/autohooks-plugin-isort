@@ -27,8 +27,8 @@ from autohooks.api.git import (
 from autohooks.api.path import match
 from autohooks.config import Config
 
-DEFAULT_INCLUDE = ('*.py',)
-DEFAULT_ARGUMENTS = ('-q',)
+DEFAULT_INCLUDE = ("*.py",)
+DEFAULT_ARGUMENTS = ("-q",)
 
 
 def check_isort_installed() -> None:
@@ -36,12 +36,12 @@ def check_isort_installed() -> None:
         import isort  # pylint: disable=unused-import, import-outside-toplevel
     except ImportError:
         raise Exception(
-            'Could not find isort. Please add isort to your python environment'
+            "Could not find isort. Please add isort to your python environment"
         ) from None
 
 
 def get_isort_config(config: Config) -> Config:
-    return config.get('tool', 'autohooks', 'plugins', 'isort')
+    return config.get("tool", "autohooks", "plugins", "isort")
 
 
 def ensure_iterable(value: Union[List[str], str]) -> List[str]:
@@ -55,7 +55,7 @@ def get_include_from_config(config: Config):
         return DEFAULT_INCLUDE
 
     isort_config = get_isort_config(config)
-    return ensure_iterable(isort_config.get_value('include', DEFAULT_INCLUDE))
+    return ensure_iterable(isort_config.get_value("include", DEFAULT_INCLUDE))
 
 
 def get_isort_arguments(config: Config):
@@ -64,7 +64,7 @@ def get_isort_arguments(config: Config):
 
     isort_config = get_isort_config(config)
     return ensure_iterable(
-        isort_config.get_value('arguments', DEFAULT_ARGUMENTS)
+        isort_config.get_value("arguments", DEFAULT_ARGUMENTS)
     )
 
 
@@ -77,10 +77,10 @@ def precommit(
     files = [f for f in get_staged_status() if match(f.path, include)]
 
     if len(files) == 0:
-        ok('No staged files for isort available')
+        ok("No staged files for isort available")
         return 0
 
-    arguments = ['isort']
+    arguments = ["isort"]
     arguments.extend(get_isort_arguments(config))
 
     with stash_unstaged_changes(files):
@@ -90,9 +90,9 @@ def precommit(
                 args.append(str(f.absolute_path()))
 
                 subprocess.check_call(args)
-                ok(f'Running isort on {str(f.path)}')
+                ok(f"Running isort on {str(f.path)}")
             except subprocess.CalledProcessError as e:
-                error(f'Running isort on {str(f.path)}')
+                error(f"Running isort on {str(f.path)}")
                 raise e from None
 
         stage_files_from_status_list(files)
