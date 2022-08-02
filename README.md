@@ -14,16 +14,15 @@ formatting via [isort](https://github.com/timothycrosley/isort).
 You can install the latest stable release of autohooks-plugin-isort from the
 Python Package Index using [pip](https://pip.pypa.io/):
 
-    pip install autohooks-plugin-isort
-
-Note the `pip` refers to the Python 3 package manager. In a environment where
-Python 2 is also available the correct command may be `pip3`.
+    python3 -m pip install autohooks-plugin-isort
 
 ### Install using poetry
 
 It is highly encouraged to use [poetry](https://python-poetry.org) for
 maintaining your project's dependencies. Normally autohooks-plugin-isort is
 installed as a development dependency.
+
+    poetry add --dev autohooks-plugin-isort
 
     poetry install
 
@@ -76,6 +75,6 @@ first.
 
 ## License
 
-Copyright (C) 2019 [Greenbone Networks GmbH](https://www.greenbone.net/)
+Copyright (C) 2019 - 2022 [Greenbone Networks GmbH](https://www.greenbone.net/)
 
 Licensed under the [GNU General Public License v3.0 or later](LICENSE).
