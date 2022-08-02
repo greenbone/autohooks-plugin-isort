@@ -79,3 +79,7 @@ pre-commit = [
 
 [tool.pontos.version]
 version-module-file = "autohooks/plugins/isort/__version__.py"
+
+[tool.isort]
+profile = "black"
+line_length = 80

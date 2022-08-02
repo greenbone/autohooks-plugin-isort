@@ -54,11 +54,7 @@ the following configuration is recommended to ensure a consistent formatting:
 
 ```toml
 [tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-line_length = 80
+profile = "black"
 ```
 
 ## Maintainer
