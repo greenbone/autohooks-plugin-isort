@@ -69,7 +69,7 @@ def get_isort_arguments(config: Config):
 
 
 def precommit(
-    config: Config = None, **kwargs
+    config: Config = None, report_progress=None, **kwargs
 ):  # pylint: disable=unused-argument
     check_isort_installed()
 
@@ -79,6 +79,9 @@ def precommit(
     if len(files) == 0:
         ok("No staged files for isort available")
         return 0
+
+    if report_progress:
+        report_progress.init(len(files))
 
     arguments = ["isort"]
     arguments.extend(get_isort_arguments(config))
@@ -91,6 +94,8 @@ def precommit(
 
                 subprocess.check_call(args)
                 ok(f"Running isort on {str(f.path)}")
+                if report_progress:
+                    report_progress.update()
             except subprocess.CalledProcessError as e:
                 error(f"Running isort on {str(f.path)}")
                 raise e from None
