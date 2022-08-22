@@ -57,7 +57,6 @@ class AutohooksIsortTestCase(TestCase):
         self.assertTrue(config_path.is_file())
 
         autohooksconfig = load_config_from_pyproject_toml(config_path)
-        self.assertTrue(autohooksconfig.has_config())
 
         isort_config = get_isort_config(autohooksconfig.get_config())
         self.assertEqual(isort_config.get_value("foo"), "bar")
