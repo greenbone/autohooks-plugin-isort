@@ -50,7 +50,7 @@ autohooks-plugin-black = ">=22.7.0"
 [tool.poetry.dev-dependencies]
 pontos = ">=22.7.2"
 pytest = "*"
-mypy = "^0.982"
+mypy = "^0.990"
 
 [tool.black]
 line-length = 80
