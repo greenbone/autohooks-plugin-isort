@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
-from typing import Iterable, List, Union
+from typing import Iterable, List, Union, Optional
 
 from autohooks.api import error, ok
 from autohooks.api.git import (
@@ -51,7 +51,7 @@ def ensure_iterable(value: Union[List[str], str]) -> List[str]:
     return value
 
 
-def get_include_from_config(config: Config) -> Iterable[str]:
+def get_include_from_config(config: Optional[Config]) -> Iterable[str]:
     if not config:
         return DEFAULT_INCLUDE
 
@@ -59,7 +59,7 @@ def get_include_from_config(config: Config) -> Iterable[str]:
     return ensure_iterable(isort_config.get_value("include", DEFAULT_INCLUDE))
 
 
-def get_isort_arguments(config: Config) -> Iterable[str]:
+def get_isort_arguments(config: Optional[Config]) -> Iterable[str]:
     if not config:
         return DEFAULT_ARGUMENTS
 
@@ -70,8 +70,8 @@ def get_isort_arguments(config: Config) -> Iterable[str]:
 
 
 def precommit(
-    config: Config = None,
-    report_progress: ReportProgress = None,
+    config: Optional[Config] = None,
+    report_progress: Optional[ReportProgress] = None,
     **kwargs,  # pylint: disable=unused-argument
 ) -> int:
     check_isort_installed()
