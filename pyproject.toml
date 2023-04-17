@@ -44,10 +44,10 @@ keywords = [
 python = "^3.7"
 isort = "^5.8.0"
 autohooks = ">=21.6.0"
-autohooks-plugin-pylint = ">=21.6.0"
-autohooks-plugin-black = ">=22.7.0"
 
 [tool.poetry.dev-dependencies]
+autohooks-plugin-pylint = ">=21.6.0"
+autohooks-plugin-black = ">=22.7.0"
 coverage = "^7.2.3"
 pontos = ">=22.7.2"
 pytest = "*"
