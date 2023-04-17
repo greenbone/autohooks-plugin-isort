@@ -50,7 +50,6 @@ autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-black = ">=22.7.0"
 coverage = "^7.2.3"
 pontos = ">=22.7.2"
-pytest = "*"
 mypy = "^1.2"
 
 [tool.black]
