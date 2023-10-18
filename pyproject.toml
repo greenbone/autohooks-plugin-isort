@@ -39,6 +39,7 @@ autohooks = ">=21.6.0"
 [tool.poetry.dev-dependencies]
 autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-black = ">=22.7.0"
+autohooks-plugin-mypy = ">=22.7.0"
 coverage = ">=7.2.7"
 pontos = ">=22.7.2"
 
@@ -64,6 +65,7 @@ pre-commit = [
   'autohooks.plugins.black',
   'autohooks.plugins.isort',
   'autohooks.plugins.pylint',
+  'autohooks.plugins.mypy',
 ]
 
 [tool.pontos.version]
