@@ -18,41 +18,33 @@ classifiers = [
   "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
   "Environment :: Console",
   "Intended Audience :: Developers",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
   "Operating System :: OS Independent",
   "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 packages = [
   { include = "autohooks" },
-  { include = "poetry.lock", format = "sdist"},
-  { include = "poetry.toml", format = "sdist"},
+  { include = "poetry.lock", format = "sdist" },
 ]
-keywords = [
-  "git",
-  "formatting",
-  "hooks",
-  "isort",
-]
+keywords = ["git", "formatting", "hooks", "isort"]
 
 [tool.poetry.dependencies]
-python = "^3.7"
-isort = "^5.8.0"
+python = "^3.9"
+isort = ">=5.8.0"
 autohooks = ">=21.6.0"
 
 [tool.poetry.dev-dependencies]
 autohooks-plugin-pylint = ">=21.6.0"
 autohooks-plugin-black = ">=22.7.0"
-coverage = "^7.2.7"
+coverage = ">=7.2.7"
 pontos = ">=22.7.2"
-mypy = "^1.4"
 
 [tool.black]
 line-length = 80
-target-version = ['py37', 'py38', 'py39', 'py310', 'py311']
+target-version = ['py39', 'py310', 'py311', 'py312']
 exclude = '''
 /(
     \.git
@@ -71,7 +63,7 @@ mode = "poetry"
 pre-commit = [
   'autohooks.plugins.black',
   'autohooks.plugins.isort',
-  'autohooks.plugins.pylint'
+  'autohooks.plugins.pylint',
 ]
 
 [tool.pontos.version]
