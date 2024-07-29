@@ -34,7 +34,7 @@ keywords = ["git", "formatting", "hooks", "isort"]
 python = "^3.9"
 isort = ">=5.8.0"
 autohooks = ">=21.6.0"
-ruff = "^0.5.5"
+ruff = "^0.5.4"
 
 [tool.poetry.dev-dependencies]
 autohooks-plugin-pylint = ">=21.6.0"
