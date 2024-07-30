@@ -30,7 +30,7 @@ from autohooks.precommit.run import ReportProgress
 
 DEFAULT_INCLUDE = ("*.py",)
 DEFAULT_ARGUMENTS = ("-q",)
-CONTENT="""
+CONTENT = """
 # pylint: disable-all
 from io import StringIO, BytesIO, FileIO  # pylint: disable=unused-import
 import sys
