@@ -15,10 +15,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-"""
-A module containing classes and functions mostly useful for creating unit tests
-"""
-
 import os
 import tempfile
 from .isort import precommit as precommit
