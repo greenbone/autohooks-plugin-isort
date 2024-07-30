@@ -50,7 +50,6 @@ status = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
 out, err = status.communicate()
 print(out.decode(encoding="utf-8"))
 print(err.decode(encoding="utf-8"))
-
 """
 
 
