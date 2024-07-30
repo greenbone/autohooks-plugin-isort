@@ -78,3 +78,14 @@ line_length = 80
 [tool.mypy]
 files = "autohooks"
 ignore_missing_imports = true
+
+[tool.ruff]
+line-length = 88
+target-version = "py38"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "Q", "I"]
+ignore = ["F401"]  # disable unused import warning
+
+# Allow imports outside of toplevel (if needed)
+allow-star-imports = true

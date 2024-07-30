@@ -30,11 +30,33 @@ from autohooks.precommit.run import ReportProgress
 
 DEFAULT_INCLUDE = ("*.py",)
 DEFAULT_ARGUMENTS = ("-q",)
+CONTENT="""
+# pylint: disable-all
+from io import StringIO, BytesIO, FileIO  # pylint: disable=unused-import
+import sys
+import black
+
+import autohooks
+
+cmd = ["pylint", "autohooks/plugins/pylint/pylint.py"]
+import subprocess  # pylint: disable=
+
+# status = subprocess.call(cmd)
+iofile = "tmp.txt"
+# status = subprocess.call(cmd, stdout=iofile)
+# blah blah lots of code ...
+
+status = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+out, err = status.communicate()
+print(out.decode(encoding="utf-8"))
+print(err.decode(encoding="utf-8"))
+
+"""
 
 
 def check_isort_installed() -> None:
     try:
-        import isort  # pylint: disable=unused-import, import-outside-toplevel
+        import isort
     except ImportError:
         raise Exception(
             "Could not find isort. Please add isort to your python environment"
@@ -72,7 +94,7 @@ def get_isort_arguments(config: Optional[Config]) -> Iterable[str]:
 def precommit(
     config: Optional[Config] = None,
     report_progress: Optional[ReportProgress] = None,
-    **kwargs,  # pylint: disable=unused-argument
+    **kwargs,
 ) -> int:
     check_isort_installed()
 

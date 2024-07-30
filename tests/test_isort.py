@@ -50,7 +50,7 @@ class AutohooksIsortTestCase(TestCase):
 
     def test_get_isort_arguments(self):
         args = get_isort_arguments(config=None)
-        self.assertEqual(args, DEFAULT_ARGUMENTS)
+        self.assertEqual(args, DEFAULTsubprocess_ARGUMENTS)
 
     def test_get_isort_config(self):
         config_path = get_test_config_path("pyproject.test.toml")
