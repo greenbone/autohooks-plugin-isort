@@ -15,14 +15,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from .isort import precommit as precommit
-
 """
 A module containing classes and functions mostly useful for creating unit tests
 """
 
 import os
 import tempfile
+from .isort import precommit as precommit
 from contextlib import contextmanager
 from pathlib import Path
 from typing import (
