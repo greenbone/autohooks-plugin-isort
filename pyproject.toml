@@ -34,10 +34,9 @@ keywords = ["git", "formatting", "hooks", "isort"]
 python = "^3.9"
 isort = ">=5.8.0"
 autohooks = ">=21.6.0"
-ruff = "^0.5.4"
 
 [tool.poetry.dev-dependencies]
-autohooks-plugin-pylint = ">=21.6.0"
+autohooks-plugin-ruff = ">=24.1.0"
 autohooks-plugin-black = ">=22.7.0"
 autohooks-plugin-mypy = ">=22.7.0"
 coverage = ">=7.2.7"
@@ -63,8 +62,7 @@ exclude = '''
 mode = "poetry"
 pre-commit = [
   'autohooks.plugins.black',
-  'autohooks.plugins.isort',
-  'autohooks.plugins.pylint',
+  'autohooks.plugins.ruff',
   'autohooks.plugins.mypy',
 ]
 
@@ -85,4 +83,3 @@ target-version = "py38"
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "Q", "I"]
-ignore = ["F401"]  # disable unused import warning

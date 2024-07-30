@@ -2,23 +2,13 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import sys
 from pathlib import Path
 from unittest import TestCase
 from unittest.mock import patch
+
+from pontos.testing import temp_git_repository
 
 from autohooks.api.git import StatusEntry
 from autohooks.config import load_config_from_pyproject_toml
@@ -82,6 +72,32 @@ class AutohooksIsortTestCase(TestCase):
     @patch("autohooks.plugins.isort.isort.error")
     @patch("autohooks.plugins.isort.isort.get_staged_status")
     def test_precommit_staged(self, staged_mock, _error_mock, _ok_mock):
-        staged_mock.return_value = [StatusEntry("M  tests/isort_test.py")]
-        ret = precommit()
-        self.assertFalse(ret)
+        CONTENT: str = (  # noqa: I001
+            """
+# pylint: disable-all
+from io import StringIO, BytesIO, FileIO  # pylint: disable=unused-import
+import sys
+import black
+
+import autohooks
+
+cmd = ["pylint", "autohooks/pluginrecommit_stages/pylint/pylint.py"]
+import subprocess  # pylint: disable=
+
+# status = subprocess.call(cmd)
+iofile = "tmp.txt"
+# status = subprocess.call(cmd, stdout=iofile)
+# blah blah lots of code ...
+
+status = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+out, err = status.communicate()
+print(out.decode(encoding="utf-8"))
+print(err.decode(encoding="utf-8"))
+"""
+        )
+        with temp_git_repository() as temp_dir:
+            test_file = temp_dir / "test.py"
+            test_file.write_text(data=CONTENT, encoding="utf8")
+            staged_mock.return_value = [StatusEntry(f"M  {test_file}")]
+            ret = precommit()
+            self.assertFalse(ret)
