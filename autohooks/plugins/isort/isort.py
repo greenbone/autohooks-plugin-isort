@@ -16,7 +16,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import subprocess
-from typing import Iterable, List, Union, Optional
+from typing import Iterable, List, Optional, Union
 
 from autohooks.api import error, ok
 from autohooks.api.git import (

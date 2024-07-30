@@ -17,7 +17,6 @@
 
 import os
 import tempfile
-from .isort import precommit as precommit
 from contextlib import contextmanager
 from pathlib import Path
 from typing import (
@@ -25,13 +24,15 @@ from typing import (
     AsyncIterator,
     # Awaitable,
     Generator,
-    # Iterable,
-    # Optional,
-    # Union,
 )
 
+# Iterable,
+# Optional,
+# Union,
 from pontos.git._git import exec_git
 from pontos.helper import add_sys_path, ensure_unload_module, unload_module
+
+from .isort import precommit as precommit
 
 __all__ = (
     "AsyncIteratorMock",
