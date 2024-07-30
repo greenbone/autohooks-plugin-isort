@@ -100,4 +100,3 @@ def temp_directory(
                 temp_dir.cleanup()
         else:
             temp_dir.cleanup()
-
