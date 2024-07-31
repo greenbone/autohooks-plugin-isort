@@ -74,8 +74,7 @@ class AutohooksIsortTestCase(TestCase):
     def test_precommit_staged(self, staged_mock, _error_mock, _ok_mock):
         CONTENT: str = (  # noqa: I001
             """
-# pylint: disable-all
-from io import StringIO, BytesIO, FileIO  # pylint: disable=unused-import
+from io import StringIO, BytesIO, FileIO
 import sys
 import black
 
