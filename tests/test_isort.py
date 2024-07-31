@@ -79,6 +79,9 @@ import sys
 import black
 
 import autohooks
+
+cmd = ["pylint", "autohooks/pluginrecommit_stages/pylint/pylint.py"]
+import subprocess
 """
         )
         with temp_git_repository() as temp_dir:
