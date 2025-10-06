@@ -31,6 +31,11 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: actions/checkout@v5
+      # WORKAROUND: The greenbone/actions/coverage-python@v3 action is currently
+      # unable to locate the poetry executable. Installing it manually
+      # before the action runs is a temporary workaround.
+      - name: Install Poetry
+        run: pipx install poetry
       - name: Install and calculate and upload coverage to codecov.io
         uses: greenbone/actions/coverage-python@v3
         with:
