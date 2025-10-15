@@ -35,7 +35,7 @@ python = "^3.9"
 isort = ">=5.8.0"
 autohooks = ">=21.6.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 autohooks-plugin-ruff = ">=24.1.0"
 autohooks-plugin-black = ">=22.7.0"
 autohooks-plugin-mypy = ">=22.7.0"
