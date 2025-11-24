@@ -30,7 +30,7 @@ jobs:
     # generic reusable workflow
     runs-on: "ubuntu-latest"
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       # WORKAROUND: The greenbone/actions/coverage-python@v3 action is currently
       # unable to locate the poetry executable. Installing it manually
       # before the action runs is a temporary workaround.
