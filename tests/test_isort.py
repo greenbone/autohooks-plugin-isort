@@ -72,8 +72,7 @@ class AutohooksIsortTestCase(TestCase):
     @patch("autohooks.plugins.isort.isort.error")
     @patch("autohooks.plugins.isort.isort.get_staged_status")
     def test_precommit_staged(self, staged_mock, _error_mock, _ok_mock):
-        CONTENT: str = (  # noqa: I001
-            """
+        CONTENT: str = """
 from io import StringIO, BytesIO, FileIO
 import sys
 import black
@@ -82,8 +81,7 @@ import autohooks
 
 cmd = ["pylint", "autohooks/pluginrecommit_stages/pylint/pylint.py"]
 import subprocess
-"""
-        )
+"""  # noqa: I001
         with temp_git_repository() as temp_dir:
             test_file = temp_dir / "test.py"
             test_file.write_text(data=CONTENT, encoding="utf8")
